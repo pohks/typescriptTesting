@@ -1,0 +1,32 @@
+apiVersion: vendir.k14s.io/v1alpha1
+kind: Config
+directories:
+- path: dev
+  contents:
+  - path: ./
+    git:
+      url: https://github.com/GaloyMoney/galoy.git
+      ref: 761b7e533635ea88cf9dd33059c3eb1be11e4afe
+    includePaths:
+    - dev/**/*
+    excludePaths:
+    - dev/bin/**/*
+    - dev/.gitignore
+    newRootPath: dev
+- path: ./graphql
+  contents:
+  - path: schemas/
+    git:
+      url: https://github.com/GaloyMoney/galoy.git
+      ref: 761b7e533635ea88cf9dd33059c3eb1be11e4afe
+    includePaths:
+    - core/api/src/graphql/public/schema.graphql
+    - core/api/src/graphql/admin/schema.graphql
+    newRootPath: core/api/src/graphql
+  - path: gql/
+    git:
+      url: https://github.com/GaloyMoney/galoy.git
+      ref: 761b7e533635ea88cf9dd33059c3eb1be11e4afe
+    includePaths:
+    - bats/gql/**/*
+    newRootPath: bats/gql
